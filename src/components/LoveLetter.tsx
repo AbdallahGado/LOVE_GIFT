@@ -163,7 +163,7 @@ export default function LoveLetter() {
                 </p>
                 
                 <p className="text-secondary/80 leading-relaxed mb-6">
-                  With you, I've learned what it means to truly love someone, to be vulnerable, and to 
+                  With you, I&apos;ve learned what it means to truly love someone, to be vulnerable, and to 
                   love without reservation. Your presence brings peace to my chaos, and your smile 
                   lights up even my darkest moments.
                 </p>

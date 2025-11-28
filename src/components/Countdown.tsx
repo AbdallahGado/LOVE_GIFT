@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
-import { useRef, useState, useEffect } from 'react';
+import { useRef, useState, useEffect, useCallback } from 'react';
 import { Calendar } from 'lucide-react';
 
 interface TimeLeft {
@@ -23,7 +23,7 @@ export default function Countdown() {
   // Count since this date
   const targetDate = new Date('2022-06-09T00:00:00');
 
-  const calculateTimePassed = (): TimeLeft => {
+  const calculateTimePassed = useCallback((): TimeLeft => {
     const difference = +new Date() - +targetDate; // count UP
 
     return {
@@ -32,7 +32,7 @@ export default function Countdown() {
       minutes: Math.floor((difference / 1000 / 60) % 60),
       seconds: Math.floor((difference / 1000) % 60),
     };
-  };
+  }, [targetDate]);
 
   const [timeLeft, setTimeLeft] = useState<TimeLeft>({
     days: 0,

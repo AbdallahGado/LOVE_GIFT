@@ -127,7 +127,7 @@ export default function ReasonsCarousel() {
                   transition={{ delay: 0.3 }}
                   className="text-2xl md:text-3xl font-serif text-primary leading-relaxed"
                 >
-                  "{current.text}"
+                  &quot;{current.text}&quot;
                 </motion.p>
               </div>
             </motion.div>

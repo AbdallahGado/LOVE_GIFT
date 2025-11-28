@@ -116,7 +116,7 @@ export default function Gallery() {
           className="mt-12 text-center"
         >
           <p className="text-secondary/60 italic font-serif">
-            ✨ That's was a really long journey ✨
+            ✨ That&apos;s was a really long journey ✨
           </p>
         </motion.div>
       </div>
