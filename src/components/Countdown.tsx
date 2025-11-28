@@ -1,9 +1,8 @@
-'use client';
+"use client";
 
-import { motion } from 'framer-motion';
-import { useInView } from 'framer-motion';
-import { useRef, useState, useEffect, useCallback } from 'react';
-import { Calendar } from 'lucide-react';
+import { motion, useInView } from "framer-motion";
+import { useRef, useState, useEffect, useCallback } from "react";
+import { Calendar } from "lucide-react";
 
 interface TimeLeft {
   days: number;
@@ -14,14 +13,14 @@ interface TimeLeft {
 
 export default function Countdown() {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: '-100px' });
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   // Hydration fix
   const [mounted, setMounted] = useState(false);
   useEffect(() => setMounted(true), []);
 
   // Count since this date
-  const targetDate = new Date('2022-06-09T00:00:00');
+  const targetDate = new Date("2022-06-09T00:00:00");
 
   const calculateTimePassed = useCallback((): TimeLeft => {
     const difference = +new Date() - +targetDate; // count UP
@@ -38,7 +37,7 @@ export default function Countdown() {
     days: 0,
     hours: 0,
     minutes: 0,
-    seconds: 0
+    seconds: 0,
   });
 
   useEffect(() => {
@@ -55,28 +54,29 @@ export default function Countdown() {
   }, [mounted, calculateTimePassed]);
 
   const timeUnits = [
-    { label: 'Days', value: timeLeft.days },
-    { label: 'Hours', value: timeLeft.hours },
-    { label: 'Minutes', value: timeLeft.minutes },
-    { label: 'Seconds', value: timeLeft.seconds },
+    { label: "Days", value: timeLeft.days },
+    { label: "Hours", value: timeLeft.hours },
+    { label: "Minutes", value: timeLeft.minutes },
+    { label: "Seconds", value: timeLeft.seconds },
   ];
 
   return (
-    <section ref={ref} className="py-24 px-6 bg-gradient-to-b from-accent/10 to-cream relative overflow-hidden">
-
+    <section
+      ref={ref}
+      className="py-24 px-6 bg-gradient-to-b from-accent/10 to-cream relative overflow-hidden"
+    >
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">
         <div
           className="absolute inset-0"
           style={{
             backgroundImage: `radial-gradient(circle, var(--primary) 1px, transparent 1px)`,
-            backgroundSize: '30px 30px'
+            backgroundSize: "30px 30px",
           }}
         />
       </div>
 
       <div className="max-w-5xl mx-auto relative z-10">
-
         {/* Heading */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -119,13 +119,12 @@ export default function Countdown() {
                 transition={{ duration: 0.3 }}
                 className="text-4xl md:text-6xl font-bold text-primary mb-2 font-serif"
               >
-                {String(unit.value).padStart(2, '0')}
+                {String(unit.value).padStart(2, "0")}
               </motion.div>
 
               <div className="text-sm md:text-base text-secondary/60 uppercase tracking-wider">
                 {unit.label}
               </div>
-
             </motion.div>
           ))}
         </div>
@@ -138,7 +137,6 @@ export default function Countdown() {
         >
           ⏰ Counting every second since June 9, 2023
         </motion.p>
-
       </div>
     </section>
   );
