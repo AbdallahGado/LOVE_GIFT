@@ -1,26 +1,61 @@
-  'use client';
+"use client";
 
-import { motion } from 'framer-motion';
-import { useInView } from 'framer-motion';
-import { useRef, useState } from 'react';
-import { Camera, X, Plus } from 'lucide-react';
+import { motion } from "framer-motion";
+import { useInView } from "framer-motion";
+import { useRef, useState } from "react";
+import { Camera, X, Plus } from "lucide-react";
 
-import Image from 'next/image';
-
+import Image from "next/image";
 
 // Real gallery data
 const photos = [
-  { id: 1, caption: 'Beautiful Moments', tall: false, color: 'from-rose-200 to-pink-100', src: '/photos/WhatsApp Image 2025-11-28 at 9.05.23 PM.jpeg' },
-  { id: 2, caption: 'Us', tall: true, color: 'from-blue-200 to-cyan-100', src: '/photos/WhatsApp Image 2025-11-28 at 9.05.27 PM (1).jpeg' },
-  { id: 3, caption: 'Together Forever', tall: false, color: 'from-amber-200 to-yellow-100', src: '/photos/WhatsApp Image 2025-11-28 at 9.05.27 PM (2).jpeg' },
-  { id: 4, caption: 'My Love', tall: false, color: 'from-violet-200 to-purple-100', src: '/photos/WhatsApp Image 2025-11-28 at 9.05.27 PM (3).jpeg' },
-  { id: 5, caption: 'Sweet Memories', tall: true, color: 'from-emerald-200 to-green-100', src: '/photos/WhatsApp Image 2025-11-28 at 9.05.27 PM (4).jpeg' },
-  { id: 6, caption: 'Adventures', tall: false, color: 'from-orange-200 to-red-100', src: '/photos/WhatsApp Image 2025-11-28 at 9.05.27 PM (5).jpeg' },
+  {
+    id: 1,
+    caption: "Beautiful Moments",
+    tall: false,
+    color: "from-rose-200 to-pink-100",
+    src: "/photos/WhatsApp Image 2025-11-28 at 9.05.23 PM.jpeg",
+  },
+  {
+    id: 2,
+    caption: "Us",
+    tall: true,
+    color: "from-blue-200 to-cyan-100",
+    src: "/photos/WhatsApp Image 2025-11-28 at 9.05.27 PM (1).jpeg",
+  },
+  {
+    id: 3,
+    caption: "Together Forever",
+    tall: false,
+    color: "from-amber-200 to-yellow-100",
+    src: "/photos/WhatsApp Image 2025-11-28 at 9.05.27 PM (2).jpeg",
+  },
+  {
+    id: 4,
+    caption: "My Love",
+    tall: false,
+    color: "from-violet-200 to-purple-100",
+    src: "/photos/WhatsApp Image 2025-11-28 at 9.05.27 PM (3).jpeg",
+  },
+  {
+    id: 5,
+    caption: "Sweet Memories",
+    tall: true,
+    color: "from-emerald-200 to-green-100",
+    src: "/photos/WhatsApp Image 2025-11-28 at 9.05.27 PM (4).jpeg",
+  },
+  {
+    id: 6,
+    caption: "Adventures",
+    tall: false,
+    color: "from-orange-200 to-red-100",
+    src: "/photos/WhatsApp Image 2025-11-28 at 9.05.27 PM (5).jpeg",
+  },
 ];
 
 export default function Gallery() {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: '-200px' });
+  const isInView = useInView(ref, { once: true, margin: "-200px" });
   const [selectedPhoto, setSelectedPhoto] = useState<number | null>(null);
 
   return (
@@ -52,19 +87,19 @@ export default function Gallery() {
               whileHover={{ scale: 1.03, rotate: Math.random() * 2 - 1 }}
               onClick={() => setSelectedPhoto(photo.id)}
               className={`relative rounded-2xl overflow-hidden cursor-pointer shadow-lg glass-card ${
-                photo.tall ? 'row-span-2' : ''
+                photo.tall ? "row-span-2" : ""
               }`}
-              style={{ minHeight: photo.tall ? '400px' : '250px' }}
+              style={{ minHeight: photo.tall ? "400px" : "250px" }}
             >
               {/* Image */}
-              <div className={`absolute inset-0 bg-gradient-to-br ${photo.color} opacity-80 flex items-center justify-center group`}>
-
-                 
-
-                <Image 
-
-                  src={photo.src} 
+              <div
+                className={`absolute inset-0 bg-gradient-to-br ${photo.color} opacity-80 flex items-center justify-center group`}
+              >
+                <Image
+                  src={photo.src}
                   alt={photo.caption}
+                  width={400}
+                  height={photo.tall ? 600 : 300}
                   className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors duration-500" />
@@ -72,12 +107,12 @@ export default function Gallery() {
 
               {/* Caption overlay */}
               <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-primary/80 to-transparent p-6 translate-y-full hover:translate-y-0 transition-transform duration-300">
-                <p className="text-white font-medium font-serif">{photo.caption}</p>
+                <p className="text-white font-medium font-serif">
+                  {photo.caption}
+                </p>
               </div>
             </motion.div>
           ))}
-          
-
         </div>
 
         {/* Photo modal */}
@@ -100,17 +135,20 @@ export default function Gallery() {
               animate={{ scale: 1 }}
               className="relative max-w-4xl w-full h-[80vh] bg-white/10 rounded-2xl flex items-center justify-center overflow-hidden"
             >
-              <div className={`absolute inset-0 bg-gradient-to-br ${photos.find(p => p.id === selectedPhoto)?.color || 'from-gray-200 to-gray-100'} opacity-30`} />
+              <div
+                className={`absolute inset-0 bg-gradient-to-br ${
+                  photos.find((p) => p.id === selectedPhoto)?.color ||
+                  "from-gray-200 to-gray-100"
+                } opacity-30`}
+              />
               {(() => {
-                const photo = photos.find(p => p.id === selectedPhoto);
+                const photo = photos.find((p) => p.id === selectedPhoto);
                 return photo ? (
-
-                   
-
-                  <Image 
-
-                    src={photo.src} 
+                  <Image
+                    src={photo.src}
                     alt={photo.caption}
+                    width={800}
+                    height={600}
                     className="relative z-10 max-w-full max-h-full object-contain shadow-2xl rounded-lg"
                   />
                 ) : null;
