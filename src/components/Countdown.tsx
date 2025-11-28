@@ -52,7 +52,7 @@ export default function Countdown() {
     }, 1000);
 
     return () => clearInterval(timer);
-  }, [mounted]);
+  }, [mounted, calculateTimePassed]);
 
   const timeUnits = [
     { label: 'Days', value: timeLeft.days },

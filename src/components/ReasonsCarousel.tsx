@@ -1,65 +1,73 @@
-
 /* eslint-disable react/no-unescaped-entities */
 
-'use client';
+"use client";
 
-import { motion, useInView, AnimatePresence } from 'framer-motion';
-import { useRef, useState, useEffect } from 'react';
-import { Heart, Smile, Star, Sparkles, Sun, Moon, Coffee, Music } from 'lucide-react';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { motion, useInView, AnimatePresence } from "framer-motion";
+import { useRef, useState, useEffect } from "react";
+import {
+  Heart,
+  Smile,
+  Star,
+  Sparkles,
+  Sun,
+  Moon,
+  Coffee,
+  Music,
+} from "lucide-react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const reasons = [
   {
     icon: Heart,
     text: "Your smile brightens even my darkest days",
-    color: "from-rose-400 to-pink-500"
+    color: "from-rose-400 to-pink-500",
   },
   {
     icon: Smile,
     text: "You make me laugh like no one else can",
-    color: "from-amber-400 to-orange-500"
+    color: "from-amber-400 to-orange-500",
   },
   {
     icon: Star,
     text: "You believe in me when I don't believe in myself",
-    color: "from-violet-400 to-purple-500"
+    color: "from-violet-400 to-purple-500",
   },
   {
     icon: Sparkles,
     text: "Every moment with you feels magical",
-    color: "from-cyan-400 to-blue-500"
+    color: "from-cyan-400 to-blue-500",
   },
   {
     icon: Sun,
     text: "You bring warmth and light into my life",
-    color: "from-yellow-400 to-amber-500"
+    color: "from-yellow-400 to-amber-500",
   },
   {
     icon: Moon,
     text: "You're the calm in my chaos, my peaceful place",
-    color: "from-indigo-400 to-blue-500"
+    color: "from-indigo-400 to-blue-500",
   },
   {
     icon: Coffee,
     text: "You make ordinary moments extraordinary",
-    color: "from-amber-500 to-brown-500"
+    color: "from-amber-500 to-brown-500",
   },
   {
     icon: Music,
     text: "My heart sings when I'm with you",
-    color: "from-pink-400 to-rose-500"
+    color: "from-pink-400 to-rose-500",
   },
 ];
 
 export default function ReasonsCarousel() {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: '-100px' });
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
 
   useEffect(() => {
     if (isPaused) return;
-    
+
     const interval = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % reasons.length);
     }, 4000);
@@ -79,8 +87,8 @@ export default function ReasonsCarousel() {
   const IconComponent = current.icon;
 
   return (
-    <section 
-      ref={ref} 
+    <section
+      ref={ref}
       className="py-24 px-6 bg-gradient-to-br from-cream via-accent/20 to-cream relative overflow-hidden"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
@@ -112,8 +120,10 @@ export default function ReasonsCarousel() {
               className="glass-card p-12 md:p-16 rounded-3xl text-center relative"
             >
               {/* Gradient background */}
-              <div className={`absolute inset-0 bg-gradient-to-br ${current.color} opacity-10 rounded-3xl`} />
-              
+              <div
+                className={`absolute inset-0 bg-gradient-to-br ${current.color} opacity-10 rounded-3xl`}
+              />
+
               <div className="relative z-10">
                 <motion.div
                   initial={{ scale: 0 }}
@@ -123,14 +133,14 @@ export default function ReasonsCarousel() {
                 >
                   <IconComponent className="w-12 h-12 text-white" />
                 </motion.div>
-                
+
                 <motion.p
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.3 }}
                   className="text-2xl md:text-3xl font-serif text-primary leading-relaxed"
                 >
-                  `"${current.text}"`
+                  &ldquo;{current.text}&rdquo;
                 </motion.p>
               </div>
             </motion.div>
@@ -154,9 +164,9 @@ export default function ReasonsCarousel() {
                   key={index}
                   onClick={() => setCurrentIndex(index)}
                   className={`h-2 rounded-full transition-all duration-300 ${
-                    index === currentIndex 
-                      ? 'w-8 bg-primary' 
-                      : 'w-2 bg-primary/30 hover:bg-primary/50'
+                    index === currentIndex
+                      ? "w-8 bg-primary"
+                      : "w-2 bg-primary/30 hover:bg-primary/50"
                   }`}
                 />
               ))}
