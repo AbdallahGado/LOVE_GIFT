@@ -1,7 +1,6 @@
-<<<<<<< HEAD
+
 /* eslint-disable react/no-unescaped-entities */
-=======
->>>>>>> 4c2130930f9533b80d774e3237dd4d3fe48ea9d4
+
 'use client';
 
 import { motion, useInView, AnimatePresence } from 'framer-motion';

@@ -4,10 +4,9 @@ import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef, useState } from 'react';
 import { Camera, X, Plus } from 'lucide-react';
-<<<<<<< HEAD
+
 import Image from 'next/image';
-=======
->>>>>>> 4c2130930f9533b80d774e3237dd4d3fe48ea9d4
+
 
 // Real gallery data
 const photos = [
@@ -59,11 +58,11 @@ export default function Gallery() {
             >
               {/* Image */}
               <div className={`absolute inset-0 bg-gradient-to-br ${photo.color} opacity-80 flex items-center justify-center group`}>
-<<<<<<< HEAD
+
+                 
+
                 <Image 
-=======
-                <img 
->>>>>>> 4c2130930f9533b80d774e3237dd4d3fe48ea9d4
+
                   src={photo.src} 
                   alt={photo.caption}
                   className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
@@ -105,11 +104,11 @@ export default function Gallery() {
               {(() => {
                 const photo = photos.find(p => p.id === selectedPhoto);
                 return photo ? (
-<<<<<<< HEAD
+
+                   
+
                   <Image 
-=======
-                  <img 
->>>>>>> 4c2130930f9533b80d774e3237dd4d3fe48ea9d4
+
                     src={photo.src} 
                     alt={photo.caption}
                     className="relative z-10 max-w-full max-h-full object-contain shadow-2xl rounded-lg"
