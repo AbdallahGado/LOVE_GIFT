@@ -8,6 +8,7 @@ import Countdown from '@/components/Countdown';
 import ReasonsCarousel from '@/components/ReasonsCarousel';
 import MusicPlayer from '@/components/MusicPlayer';
 import WelcomeOverlay from '@/components/WelcomeOverlay';
+import { Analytics } from "@vercel/analytics/next"
 import { useState } from 'react';
 
 export default function Home() {
@@ -20,7 +21,7 @@ export default function Home() {
       <div id="home">
         <Hero />
       </div>
-      
+      <Analytics/>
       <Countdown />
       
       <div id="journey">
