@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useInView } from "framer-motion";
-import { useRef, useState, useEffect, useCallback } from "react";
+import { useRef, useState, useEffect, useCallback, useMemo } from "react";
 import { Calendar } from "lucide-react";
 
 interface TimeLeft {
@@ -19,8 +19,11 @@ export default function Countdown() {
   const [mounted, setMounted] = useState(false);
   useEffect(() => setMounted(true), []);
 
-  // Count since this date
-  const targetDate = new Date("2022-06-09T00:00:00");
+
+  const targetDate = useMemo(
+    () => new Date("2022-06-09T00:00:00"),
+    []
+  );
 
   const calculateTimePassed = useCallback((): TimeLeft => {
     const difference = +new Date() - +targetDate; // count UP
@@ -43,7 +46,6 @@ export default function Countdown() {
   useEffect(() => {
     if (!mounted) return;
 
-    // Now safe to set the correct time
     setTimeLeft(calculateTimePassed());
 
     const timer = setInterval(() => {
